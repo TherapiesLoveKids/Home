@@ -1,0 +1,43 @@
+/* styles/TabsContent.module.css */
+
+.tabsContainer{
+  min-height: 500px;
+  .tabs {
+    display: flex;
+    justify-content: left;
+    
+    button {
+      background-color: var(--BL3);
+      border: none;
+      border-radius: 0px;
+      padding: 10px 20px;
+      cursor: pointer;
+
+      &:hover{
+        background-color: #ddd;
+      }
+
+      &:focus{
+        outline: none;
+      }
+      
+      &.active {
+        background-color: var(--B1);
+        color: white;
+        border-radius: 5px 5px 0px 0px;
+        padding: 10px 40px;
+      }
+    }
+  }
+
+  & .tabContent{
+    padding: 20px;
+    background-color: var(--BL3);
+    border-radius: 0px 15px 15px 15px;
+
+    & li{
+      line-height: 15px;
+    }
+  }
+
+}

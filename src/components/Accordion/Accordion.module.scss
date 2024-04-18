@@ -1,0 +1,100 @@
+.accordionContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & .accordion {
+        border-radius: 15px;
+        overflow: hidden;
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Core styles/functionality */
+.tab input {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+
+    &:checked ~ .tab__content{
+        max-height: 1500px;
+        overflow-y: scroll;
+        border: 2px solid var(--B1);
+        border-radius:15px;
+    }
+
+    &:checked + .tab__label::after {
+        transform: rotate(270deg);
+        margin-right: 5px;
+    }
+
+    &:checked + .tab__label{
+        background: var(--B1);
+        color: var(--BL3);
+    }
+
+    &:not(:checked) + .tab__label:hover::after {
+        animation: bounce .5s infinite;
+    }
+}
+
+/* Visual styles */
+
+.tab__label {
+    border-radius: 15px;
+    display: flex;
+    color: var(--BL2);
+    background: var(--BL3);
+    cursor: pointer;
+    justify-content: space-between;
+    padding: 1rem;
+    border: 2px solid var(--BL4);
+    font-weight: 600;
+
+    &:hover{
+        background: var(--BL4);
+        border: solid var(--BL3);
+        border-width: 2px;
+    }
+
+    &::after {
+        content: "\276F";
+        width: 1em;
+        height: 1em;
+        text-align: center;
+        transform: rotate(90deg);
+        transition: all 0.35s;
+    }
+}
+
+.tab__content{
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.35s;
+
+    & p {
+        margin: 0;
+        padding: 1rem;
+        text-align: justify;
+        text-indent: 50px;
+    }
+    & ul{
+        margin: 0 50px;
+        padding: 1rem;
+        text-align: justify;
+    }
+}
+
+/* Arrow animation */
+@keyframes bounce {
+    25% {
+        transform: rotate(90deg) translate(.25rem);
+    }
+    75% {
+        transform: rotate(90deg) translate(-.25rem);
+    }
+}
